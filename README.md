@@ -6,7 +6,7 @@ Neophodno je kreirati **.NET Core** biblioteku `RateLimiter` koja implementira o
 
 `RateLimiter` biblioteka u funkcionalnom pattern-u treba da predstavlja **middleware**, koji u middleware pipeline-u postoji pre *request-specific* middleware biblioteka koje zahtevaju poslovnu obradu request header-a (Auth, CORS itd.).
 
-Osnovni kriterijum na osnovu koga će se vršiti ograničavanje zahteva je {+dolazna IP adresa+}, odnosno, svi limiti za pristup će se primenjivati na osnovu IP adrese sa koje dolazi zahtev.
+Osnovni kriterijum na osnovu koga će se vršiti ograničavanje zahteva je **dolazna IP adresa**, odnosno, svi limiti za pristup će se primenjivati na osnovu IP adrese sa koje dolazi zahtev.
 
 Biblioteka treba da omogući:
 
@@ -23,9 +23,7 @@ Potrebno je implementirati podrazumevani limit za pristup svim endpoint-ima serv
 
 Za vrednosti `DefaultRequestLimitCount = 5` i `DefaultRequestLimitMs = 1000`, korisniku sa jedne IP adrese dozvoljeno je da u roku od **1 sekunde** pošalje **5 upita** ka endpoint-ima servisa.
 
-Kao dodatnu funkcionalnost - {-nije neophodno za review biblioteke-}, omogućiti
-
-#### Limit za konkretan endpoint - {-extra credits-}
+#### **Extra credits** - **nije neophodno za review biblioteke** - Limit za konkretan endpoint
 
 Potrebno je implementirati limit za pristup **konkretnom endpoint-u** servisa, i to:
 
@@ -47,7 +45,7 @@ Potrebno je implementirati limit za pristup **konkretnom endpoint-u** servisa, i
 | EndpointLimits/RequestLimitMs*    | Podrazumevani vremenski okvir na broj zahteva za endpoint             | `integer` |
 | EndpointLimits/RequestLimitCount* | Limit na uzastopni broj zahteva u vremenskom okviru za endpoint       | `integer` |
 
-*Ukoliko se implementira {-extra-credits-} zadatak
+*Ukoliko se implementira _extra-credits_ zadatak
 
 **Primer konfiguracije:**
 
