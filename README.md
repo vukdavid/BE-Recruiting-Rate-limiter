@@ -72,7 +72,7 @@ Potrebno je implementirati limit za pristup **konkretnom endpoint-u** servisa, i
 ## Prerequisites za projekat
 
 *   [.NET Core 5](https://dotnet.microsoft.com/download/dotnet/5.0),
-*   Adekvatan [readme.md](https://gitlab.nil.rs/recruiting/tasks/dotnet/rate-limiter/-/blob/master/README.md) sa opisom konfiguracije i načina inicijalizacije biblioteke u projekat
+*   Adekvatan **README.md** sa opisom konfiguracije i načina inicijalizacije biblioteke u projekat
 
 ## Napomene
 
