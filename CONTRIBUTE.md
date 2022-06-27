@@ -10,4 +10,4 @@ Kandidati kojima je dodeljen zadatak opisan u [funkcionalnom zahtevu](README.md)
 
 ### Napomena
 
-Bilo kakva pitanja, sugestije ili zahteve za pojašnjenjem neophodno je priložiti isključivo preko **Issues** projektne sekcije dodeljenog zadatka.
+Bilo kakva pitanja, sugestije ili zahteve za pojašnjenjem neophodno je priložiti isključivo preko **Issues** projektne sekcije dodeljenog zadatka na **ličnom** GitHub repozitorijumu kandidata.
