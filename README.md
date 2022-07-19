@@ -1,6 +1,6 @@
 ## Opis zahteva
 
-Neophodno je kreirati **.NET Core** biblioteku `RateLimiter` koja implementira osnovne funkcionalnosti filtriranja pristupa endpoint-ima servisa na osnovu konfigurabilnih limita. Biblioteku struktuirati na način da se može postaviti na random **Nuget** repozitorijum, odnosno neophodno je da bude u potpunosti self-contained.
+Neophodno je kreirati **.NET Core** biblioteku `RateLimiter` koja implementira osnovne funkcionalnosti filtriranja pristupa endpoint-ima servisa na osnovu konfigurabilnih limita. Biblioteku struktuirati na način da se može postaviti na random **Nuget** repozitorijum, odnosno neophodno je da bude **u potpunosti self-contained**.
 
 ## Funkcionalnosti
 
