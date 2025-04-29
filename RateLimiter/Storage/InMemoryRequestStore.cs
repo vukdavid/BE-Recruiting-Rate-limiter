@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace RateLimiter.Storage
 {
@@ -18,14 +18,13 @@ namespace RateLimiter.Storage
             var now = DateTimeOffset.UtcNow;
             var record = _store.AddOrUpdate(
                 key,
-                // Add new record if key doesn't exist
                 _ => new RequestRecord { Timestamp = now, Count = 1 },
-                // Update existing record
-                (_, existingRecord) =>
+                (_, existingRecord) => 
                 {
-                    existingRecord.Count++;
+                    Interlocked.Increment(ref existingRecord.Count);
                     return existingRecord;
-                });
+                }
+            );
 
             return record.Count;
         }
@@ -34,14 +33,12 @@ namespace RateLimiter.Storage
         public void Cleanup(long olderThanMs)
         {
             var expiryTime = DateTimeOffset.UtcNow.AddMilliseconds(-olderThanMs);
-            
-            // Find expired keys
+
             var keysToRemove = _store
                 .Where(kvp => kvp.Value.Timestamp < expiryTime)
                 .Select(kvp => kvp.Key)
                 .ToList();
 
-            // Remove them from the dictionary
             foreach (var key in keysToRemove)
             {
                 _store.TryRemove(key, out _);

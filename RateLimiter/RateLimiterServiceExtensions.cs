@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using RateLimiter.Algorithms;
 using RateLimiter.Configuration;
 using RateLimiter.Matching;
@@ -68,9 +69,9 @@ namespace RateLimiter
 
         private static void RegisterServices(IServiceCollection services)
         {
-            services.AddSingleton<IRateLimitAlgorithm, FixedWindowAlgorithm>();
-            services.AddSingleton<IRequestStore, InMemoryRequestStore>();
-            services.AddSingleton<IEndpointMatcher, DefaultEndpointMatcher>();
+            services.TryAddSingleton<IRateLimitAlgorithm, FixedWindowAlgorithm>();
+            services.TryAddSingleton<IRequestStore, InMemoryRequestStore>();
+            services.TryAddSingleton<IEndpointMatcher, SimpleEndpointMatcher>();
         }
     }
 }

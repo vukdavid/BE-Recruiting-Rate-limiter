@@ -30,24 +30,19 @@ namespace RateLimiter.Algorithms
             int requestLimitMs,
             int requestLimitCount)
         {
-            // Current time window
             var timestamp = DateTimeOffset.UtcNow;
-            var windowId = timestamp.ToUnixTimeMilliseconds() / requestLimitMs;
+            var windowStart = timestamp.ToUnixTimeMilliseconds() / requestLimitMs;
             
-            // Generate a unique key for this client, endpoint and window
-            string key = $"{ipAddress}:{path}:{windowId}";
+            string key = $"{ipAddress}:{path}:{windowStart}";
             
-            // Increment the counter for this request
             long currentCount = _requestStore.IncrementRequestCount(key);
 
-            // Clean up old entries periodically
+            // clean up old entries periodically (runs once per new window/bucket)
             if (currentCount == 1)
             {
-                // Only do cleanup when creating a new entry to avoid doing it too often
-                _ = Task.Run(() => _requestStore.Cleanup(requestLimitMs * 2));
+                _ = Task.Run(() => _requestStore.Cleanup(requestLimitMs * 2)); // keep two windows behind
             }
 
-            // Determine if the request should be limited
             return currentCount > requestLimitCount;
         }
     }

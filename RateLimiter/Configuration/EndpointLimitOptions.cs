@@ -6,8 +6,8 @@ namespace RateLimiter.Configuration
     public class EndpointLimitOptions
     {
         /// <summary>
-        /// The endpoint path to apply rate limiting to.
-        /// Supports route templates (e.g. "/api/products/{id}").
+        /// The exact endpoint path to apply rate limiting to (e.g. "/api/products/books").
+        /// Case-insensitive matching is used.
         /// </summary>
         public string Endpoint { get; set; }
 

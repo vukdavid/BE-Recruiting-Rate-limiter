@@ -45,7 +45,7 @@ namespace RateLimiter
         }
 
         /// <summary>
-        /// Process an HTTP request.
+        /// Processes an incoming HTTP request, applying rate limiting rules based on the client's IP address and configured options.
         /// </summary>
         /// <param name="context">The HTTP context for the request.</param>
         /// <returns>A task that represents the completion of request processing.</returns>
@@ -66,7 +66,7 @@ namespace RateLimiter
             bool shouldLimit = _algorithm.ShouldLimitRequest(
                     context,
                     ipAddress,
-                    path,
+                    endpointLimit?.Endpoint ?? "__default__",
                     endpointLimit?.RequestLimitMs ?? _options.DefaultRequestLimitMs,
                     endpointLimit?.RequestLimitCount ?? _options.DefaultRequestLimitCount);
 
