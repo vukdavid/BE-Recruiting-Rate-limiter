@@ -20,7 +20,6 @@ namespace RateLimiter
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
         /// <param name="configuration">The configuration under section "RateLimiter". See <see cref="RateLimiterOptions"/> for details.
-        /// For endpoint-specific limits, you can set <see cref="EndpointLimitOptions.MatchHttpMethod"/> to true to apply rate limiting per HTTP method.</param>
         /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IServiceCollection AddIpRateLimiter(
             this IServiceCollection services,
@@ -40,7 +39,6 @@ namespace RateLimiter
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
         /// <param name="configureOptions">The action used to configure the options.
-        /// For endpoint-specific limits, you can set <see cref="EndpointLimitOptions.MatchHttpMethod"/> to true to apply rate limiting per HTTP method.</param>
         /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IServiceCollection AddIpRateLimiter(
             this IServiceCollection services,

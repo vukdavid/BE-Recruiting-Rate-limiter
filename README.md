@@ -108,7 +108,7 @@ app.UseIpRateLimiter();
 
 ## Proširenje funkcionalnosti
 
-Biblioteka je implementirana tako da podržava proširivost. Korišćenjem definisanih interfejsa moguće je zameniti ili proširiti osnovne komponente (algoritam za limitiranje, način skladištenja podataka, logiku za poređenje putanja) sopstvenim implementacijama, čime se omogućava prilagođavanje RateLimiter-a specifičnim zahtevima aplikacije.
+Biblioteka je implementirana tako da podržava proširivost. Korišćenjem definisanih interfejsa moguće je zameniti ili proširiti osnovne komponente (algoritam za limitiranje, način skladištenja podataka, logiku za poređenje putanja) sopstvenim implementacijama.
 
 Sledeći interfejsi se mogu dodatno implementirati:
 
