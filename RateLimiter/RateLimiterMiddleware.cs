@@ -64,7 +64,6 @@ namespace RateLimiter
             var endpointLimit = FindEndpointLimitOptions(path, method);
 
             bool shouldLimit = _algorithm.ShouldLimitRequest(
-                    context,
                     ipAddress,
                     endpointLimit?.Endpoint ?? "__default__",
                     endpointLimit?.RequestLimitMs ?? _options.DefaultRequestLimitMs,

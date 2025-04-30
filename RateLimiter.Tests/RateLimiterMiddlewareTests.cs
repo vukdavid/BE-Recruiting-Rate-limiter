@@ -103,7 +103,6 @@ namespace RateLimiter.Tests
             // Assert
             _mockNext.Verify(next => next(_httpContext), Times.Once);
             _mockAlgorithm.Verify(a => a.ShouldLimitRequest(
-                It.IsAny<HttpContext>(),
                 It.IsAny<string>(),
                 It.IsAny<string>(),
                 It.IsAny<int>(),
@@ -115,7 +114,6 @@ namespace RateLimiter.Tests
         {
             // Arrange
             _mockAlgorithm.Setup(a => a.ShouldLimitRequest(
-                    It.IsAny<HttpContext>(),
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<int>(),
@@ -142,7 +140,6 @@ namespace RateLimiter.Tests
         {
             // Arrange
             _mockAlgorithm.Setup(a => a.ShouldLimitRequest(
-                    It.IsAny<HttpContext>(),
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<int>(),
@@ -192,7 +189,6 @@ namespace RateLimiter.Tests
             
             // Assert
             _mockAlgorithm.Verify(a => a.ShouldLimitRequest(
-                _httpContext,
                 It.IsAny<string>(),
                 "__default__", // Default path marker
                 _options.DefaultRequestLimitMs, // Default time window
@@ -225,7 +221,6 @@ namespace RateLimiter.Tests
             
             // Assert
             _mockAlgorithm.Verify(a => a.ShouldLimitRequest(
-                _httpContext,
                 It.IsAny<string>(),
                 endpointLimit.Endpoint, // Specific endpoint path 
                 endpointLimit.RequestLimitMs, // Endpoint-specific time window

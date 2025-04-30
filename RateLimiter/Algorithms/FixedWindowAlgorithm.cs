@@ -24,7 +24,6 @@ namespace RateLimiter.Algorithms
 
         /// <inheritdoc />
         public bool ShouldLimitRequest(
-            HttpContext context,
             string ipAddress,
             string path,
             int requestLimitMs,

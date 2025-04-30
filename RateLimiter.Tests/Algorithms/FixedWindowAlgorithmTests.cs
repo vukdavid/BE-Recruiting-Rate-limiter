@@ -10,13 +10,11 @@ namespace RateLimiter.Tests.Algorithms
     {
         private readonly Mock<IRequestStore> _mockRequestStore;
         private readonly FixedWindowAlgorithm _algorithm;
-        private readonly Mock<HttpContext> _mockHttpContext;
 
         public FixedWindowAlgorithmTests()
         {
             _mockRequestStore = new Mock<IRequestStore>();
             _algorithm = new FixedWindowAlgorithm(_mockRequestStore.Object);
-            _mockHttpContext = new Mock<HttpContext>();
         }
 
         [Fact]
@@ -42,7 +40,6 @@ namespace RateLimiter.Tests.Algorithms
 
             // Act
             bool result = _algorithm.ShouldLimitRequest(
-                _mockHttpContext.Object,
                 ipAddress,
                 path,
                 requestLimitMs,
@@ -68,7 +65,6 @@ namespace RateLimiter.Tests.Algorithms
 
             // Act
             bool result = _algorithm.ShouldLimitRequest(
-                _mockHttpContext.Object,
                 ipAddress,
                 path,
                 requestLimitMs,
@@ -94,7 +90,6 @@ namespace RateLimiter.Tests.Algorithms
 
             // Act
             bool result = _algorithm.ShouldLimitRequest(
-                _mockHttpContext.Object,
                 ipAddress,
                 path,
                 requestLimitMs,
@@ -120,7 +115,6 @@ namespace RateLimiter.Tests.Algorithms
 
             // Act
             _algorithm.ShouldLimitRequest(
-                _mockHttpContext.Object,
                 ipAddress,
                 path,
                 requestLimitMs,
@@ -148,7 +142,6 @@ namespace RateLimiter.Tests.Algorithms
 
             // Act
             _algorithm.ShouldLimitRequest(
-                _mockHttpContext.Object,
                 ipAddress,
                 path,
                 requestLimitMs,
@@ -178,7 +171,6 @@ namespace RateLimiter.Tests.Algorithms
 
             // Act
             _algorithm.ShouldLimitRequest(
-                _mockHttpContext.Object,
                 ipAddress,
                 path,
                 requestLimitMs,

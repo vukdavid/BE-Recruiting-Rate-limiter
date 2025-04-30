@@ -123,7 +123,6 @@ Moguće je implementirati i druge algoritme, kao što su Sliding Window, Token B
 public interface IRateLimitAlgorithm
 {
     bool ShouldLimitRequest(
-        HttpContext context,
         string ipAddress, 
         string path,
         int requestLimitMs, 
@@ -138,7 +137,7 @@ public interface IRateLimitAlgorithm
 Ovaj interfejs definiše logiku za poređenje putanje zahteva sa konfigurisanom putanjom.
 Podrazumevana implementacija je `SimpleEndpointMatcher`, koja vrši poređenje putanja kao običan "case-insensitive" string.
 
-Primer dodatnih mehanizama za poređenje: query string parametri ili route template (npr. `/api/products/{id}`)
+Moguće je implementirati i druga poređenja kao što su: query string parametri ili route template (npr. `/api/products/{id}`)
 
 ```csharp
 public interface IEndpointMatcher
@@ -188,7 +187,7 @@ services.AddIpRateLimiter(configuration);
 
 ## Testiranje pomoću RateLimiter.Demo aplikacije
 
-U repozitorijumu se nalazi demo aplikacija za testiranje funkcionalnosti.
+U repozitorijumu se nalazi demo aplikacija za testiranje funkcionalnosti `RateLimiter.Demo`.
 
 Dostupni endpoint-i:
 
@@ -196,7 +195,7 @@ Dostupni endpoint-i:
 2. `GET /api/RateLimitTest/limited` – specifičan limit (2 zahteva u 5 sekundi)
 
 Za testiranje se mogu koristiti:
-- Swagger UI (`/swagger` u Development okruženju)
+- Swagger UI (`/swagger` u development okruženju)
 - Postman, curl i sl.
 
 Prekoračenje limita rezultuje odgovorom `429 Too Many Requests`.
